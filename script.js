@@ -1,19 +1,41 @@
+const tagTarjetaFlotante = document.getElementById("api");
+
 /*  Contenedor de las tarjetas Variables y el Fetch para acceder a la informacion
     Situada en el Json datos_tarjetas_areas
 */
-const indexDatos = document.querySelector(".contenedor_tarjetas_distritos");
-const contenedorTF = document.querySelector(".container_Flotante");
-const tagTarjetaFlotante = document.getElementById("evento_tarjeta_Flotante");
-const url = "datos_tarjetas_areas.json";
 
+const puesto = parseInt(prompt('Numero de Puesto'));
+const pokeapi = "https://pokeapi.co/api/v2/pokemon/${puesto}";
 
-fetch(url)
-  .then((res) => res.json())
-  .then((data) => {
-    console.log(data);
-    data.sort(function (a, b) {
-      return a.orden - b.orden;
-    });
-    data.forEach((data) => createTarjeta(data));
-  })
-  .catch((err) => console.log(err));
+/*--[ ■ ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ ]--*/
+
+async function llamadaApi () {
+
+  try {
+    const respuesta = await fetch(pokeapi);
+    const data = await respuesta.json()
+
+    insertaEnDocumento(data)
+
+  } catch (error) {
+    console.error(error);
+  }
+  // body
+}
+
+/*--[ ■ ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ ]--*/
+
+function insertaEnDocumento (data) {
+  const card = document.createElement(div);
+  
+  const contenedorName = document.createElement(p);
+  const contenedorImg = document.createElement(div);
+  const imagen = document.createElement(img);
+
+  card.classList.add("");
+  contenedorName.classList.add("");
+  contenedorImg.classList.add("")
+
+  contenedorName = data.name;
+  contenedorImg = data.sprites.front_default
+}
