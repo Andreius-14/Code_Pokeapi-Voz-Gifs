@@ -1,41 +1,54 @@
-const tagTarjetaFlotante = document.getElementById("api");
-
 /*  Contenedor de las tarjetas Variables y el Fetch para acceder a la informacion
     Situada en el Json datos_tarjetas_areas
 */
 
-const puesto = parseInt(prompt('Numero de Puesto'));
-const pokeapi = "https://pokeapi.co/api/v2/pokemon/${puesto}";
+const indexDatos = document.querySelector('.api')
+// eslint-disable-next-line no-undef
+const puesto = prompt('Numero Puesto', 1)
 
-/*--[ ■ ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ ]--*/
+const pokeapi = `https://pokeapi.co/api/v2/pokemon/${puesto}`
+
+/* --[ ■ ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ ]-- */
 
 async function llamadaApi () {
-
   try {
-    const respuesta = await fetch(pokeapi);
+    const respuesta = await fetch(pokeapi)
     const data = await respuesta.json()
 
-    insertaEnDocumento(data)
+    // console.log(data.name);
+    // console.log(data.sprites.front_default);
 
+    insertaEnDocumento(data)
   } catch (error) {
-    console.error(error);
+    console.error(error)
   }
-  // body
 }
 
-/*--[ ■ ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ ]--*/
+/* --[ ■ ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ ]-- */
 
 function insertaEnDocumento (data) {
-  const card = document.createElement(div);
-  
-  const contenedorName = document.createElement(p);
-  const contenedorImg = document.createElement(div);
-  const imagen = document.createElement(img);
+  console.log(data.name)
 
-  card.classList.add("");
-  contenedorName.classList.add("");
-  contenedorImg.classList.add("")
+  const carta = document.createElement('div')
+  carta.classList.add('carta')
 
-  contenedorName = data.name;
-  contenedorImg = data.sprites.front_default
+  const contenedorName = document.createElement('p')
+  contenedorName.classList.add('cartaName')
+  contenedorName.innerHTML = data.name
+
+  const contenedorImg = document.createElement('div')
+  contenedorImg.classList.add('cartaImg')
+
+  const imagen = document.createElement('img')
+  imagen.src = data.sprites.front_default
+
+  // Insercion a Tarjeta
+  contenedorImg.appendChild(imagen)
+
+  carta.appendChild(contenedorName)
+  carta.appendChild(contenedorImg)
+
+  indexDatos.appendChild(carta)
 }
+
+llamadaApi()
