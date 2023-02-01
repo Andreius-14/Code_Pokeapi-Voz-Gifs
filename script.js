@@ -1,54 +1,73 @@
-/*  Contenedor de las tarjetas Variables y el Fetch para acceder a la informacion
-    Situada en el Json datos_tarjetas_areas
-*/
+/* eslint-disable no-multiple-empty-lines */
+/* eslint-disable padded-blocks */
 
 const indexDatos = document.querySelector('.api')
-// eslint-disable-next-line no-undef
-const puesto = prompt('Numero Puesto', 1)
+const pokeapi = 'https://pokeapi.co/api/v2/pokemon'
 
-const pokeapi = `https://pokeapi.co/api/v2/pokemon/${puesto}`
-
-/* --[ ■ ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ ]-- */
-
-async function llamadaApi () {
+// --[■■■ Api - Obtiene Listas de Url ■■■]
+async function listaUrlPokemon () {
   try {
-    const respuesta = await fetch(pokeapi)
-    const data = await respuesta.json()
 
-    // console.log(data.name);
-    // console.log(data.sprites.front_default);
+    // [Enlace Api]
+    const respuestaLista = await fetch(pokeapi)
+    const dataLista = await respuestaLista.json()
+    const pokemonLista = Array.from(dataLista.results)
 
-    insertaEnDocumento(data)
+    // [Llama Funcion]
+    for (const params of pokemonLista) {
+      await llamadaPokemon(params.url)
+    }
+
+  } catch (e) {
+    console.error(e)
+  }
+}
+
+// --[■■■ Api - Obtiene Informacion del Pokemon ■■■]
+async function llamadaPokemon (urlpokemon) {
+  try {
+
+    // [Enlace Api]
+    const respuesta = await fetch(urlpokemon)
+    const dataPokemon = await respuesta.json()
+
+    // [Llama Funcion]
+    insertaCartaPokemon(dataPokemon)
+    console.log(dataPokemon.id)
+
   } catch (error) {
     console.error(error)
   }
 }
 
-/* --[ ■ ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ ]-- */
+// --[■■■ Inserta Contenido HTML ■■■]
+function insertaCartaPokemon (data) {
 
-function insertaEnDocumento (data) {
-  console.log(data.name)
-
+  // [Carta]
   const carta = document.createElement('div')
   carta.classList.add('carta')
 
+
+  // [Carta - Contenido]
   const contenedorName = document.createElement('p')
   contenedorName.classList.add('cartaName')
   contenedorName.innerHTML = data.name
 
   const contenedorImg = document.createElement('div')
-  contenedorImg.classList.add('cartaImg')
+  contenedorImg.classList.add('cartaContenedorImg')
 
   const imagen = document.createElement('img')
   imagen.src = data.sprites.front_default
 
-  // Insercion a Tarjeta
-  contenedorImg.appendChild(imagen)
 
+  // [Carta - Union de Contenido]
+  contenedorImg.appendChild(imagen)
   carta.appendChild(contenedorName)
   carta.appendChild(contenedorImg)
 
+  // [Carta - Insercion al HTML]
   indexDatos.appendChild(carta)
+
 }
 
-llamadaApi()
+listaUrlPokemon()

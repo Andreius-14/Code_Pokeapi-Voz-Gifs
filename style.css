@@ -4,41 +4,58 @@ body {
     width:100%;
     display:grid;
     place-items:center;
+    background-image: url('https://p4.wallpaperbetter.com/wallpaper/684/966/498/wood-timber-closeup-wooden-surface-wallpaper-preview.jpg');
+    background-size: fixed;
     }
+
 .api{
+
+/* background-size: ; */
 padding: 20px;
-background: rgba( 255, 255, 255, 0.25 );
+
+background: rgba( 255, 255, 255, 0.05 );
 box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
 backdrop-filter: blur( 4px );
 -webkit-backdrop-filter: blur( 4px );
 border-radius: 10px;
 border: 1px solid rgba( 255, 255, 255, 0.18 );
+
+height: 80%;
+display: grid;
+grid-template-columns:repeat(3,minmax(180px,1fr));
+gap: 50px;
+
+/* margin-top: 20px; */
+/* overflow: hidden; */
+/* overflow-y: scroll; */
+
 }
 
 
 .carta{
 width: 250px;
-height: 250px;
-background: rgba( 1, 2, 1, 0.25 );
+/* height: 250px; */
+
+background: rgba(255, 255, 255, 0.322);
 box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-backdrop-filter: blur( 4px );
--webkit-backdrop-filter: blur( 4px );
+backdrop-filter: blur( 5.5px );
+-webkit-backdrop-filter: blur( 5.5px );
 border-radius: 10px;
 border: 1px solid rgba( 255, 255, 255, 0.18 );
 
-height: 90%;
+/* height: 90%; */
 display: flex;
 justify-content: center;
 align-items: center;
 /* flex: 1 1; */
-flex-direction: column;
+/* flex-direction: column; */
 /* margin:auto; */
-
+/* gap: 100px; */
 }
 .cartaName{
 /* width: 90%; */
 }
-.cartaImg{
-    /* width: 90%; */
+.cartaContenedorImg{
+    /* width: ; */
     height: auto;
 }
