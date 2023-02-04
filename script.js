@@ -70,7 +70,10 @@ function insertaCartaPokemon (data) {
 
   const imagen = document.createElement('img')
   imagen.classList.add('imagenes')
-  imagen.src = data.sprites.front_default
+  // imagen.src = data.sprites.front_default
+  imagen.src = data.sprites.versions['generation-v']['black-white'].animated.front_default
+
+
 
 
   // [Carta - Union de Contenido]
@@ -83,7 +86,6 @@ function insertaCartaPokemon (data) {
 
 
   // [Carta - Evento]
-  
   carta.addEventListener('click', (data) => {
     divflotante.style.visibility = 'visible'
     eventoTarjetaFlotante(data)
@@ -93,8 +95,11 @@ function insertaCartaPokemon (data) {
 
 // --[■■■ Evento de Tarjeta ■■■]
 function eventoTarjetaFlotante (data) {
+
   divflotante.addEventListener('click', () => {
     divflotante.style.visibility = 'hidden'
   })
+
+
 }
 

@@ -41,7 +41,7 @@ color: aliceblue;
     margin: 30px auto 30px auto;
     padding: 10px;
 
-    width: 80vw;
+    max-width: 80vw;
 
 }
 
@@ -49,7 +49,9 @@ color: aliceblue;
 .carta{
 
 display: flex;
-justify-content: center;
+justify-content: space-evenly;
+/* justify-content: center; */
+
 align-items: center;
 gap: 10px;
 
@@ -61,16 +63,17 @@ height: 150px;
 .cartaName{
     margin-top: auto;
     margin-bottom: auto;
+    
 }
 .cartaContenedorImg{
-
 }
 
 .imagenes{
   z-index: 110;
   filter:drop-shadow(4px 2px 1px rgb(0, 0, 0)) ; 
   position: relative  ;
-
+  /* width: 100%; */
+  padding: 15px;
 
 }
 
