@@ -1,25 +1,37 @@
 /* eslint-disable no-multiple-empty-lines */
 /* eslint-disable padded-blocks */
+const numeroPokemon = prompt('Numero de Pokemosn 1-900', 21)
+const indexDatos = document.querySelector('.contenedorApi')
+const divflotante = document.querySelector('.contenedorFlotante')
 
-const indexDatos = document.querySelector('.api')
 const pokeapi = 'https://pokeapi.co/api/v2/pokemon'
 
+divflotante.style.visibility = 'hidden'
+
 // --[■■■ Api - Obtiene Listas de Url ■■■]
-async function listaUrlPokemon () {
-  try {
+// async function listaUrlPokemon () {
+//   try {
 
-    // [Enlace Api]
-    const respuestaLista = await fetch(pokeapi)
-    const dataLista = await respuestaLista.json()
-    const pokemonLista = Array.from(dataLista.results)
+//     // [Enlace Api]
+//     const respuestaLista = await fetch(pokeapi)
+//     const dataLista = await respuestaLista.json()
+//     const pokemonLista = Array.from(dataLista.results)
 
-    // [Llama Funcion]
-    for (const params of pokemonLista) {
-      await llamadaPokemon(params.url)
-    }
+//     // [Llama Funcion]
+//     for (const params of pokemonLista) {
+//       await llamadaPokemon(params.url)
+//     }
 
-  } catch (e) {
-    console.error(e)
+//   } catch (e) {
+//     console.error(e)
+//   }
+// }
+ejecucion()
+
+async function ejecucion () {
+  for (let i = 1; i <= numeroPokemon; i++) {
+    await llamadaPokemon(`${pokeapi}/${i}`)
+    console.log(`${pokeapi}/${i}`)
   }
 }
 
@@ -57,6 +69,7 @@ function insertaCartaPokemon (data) {
   contenedorImg.classList.add('cartaContenedorImg')
 
   const imagen = document.createElement('img')
+  imagen.classList.add('imagenes')
   imagen.src = data.sprites.front_default
 
 
@@ -68,6 +81,20 @@ function insertaCartaPokemon (data) {
   // [Carta - Insercion al HTML]
   indexDatos.appendChild(carta)
 
+
+  // [Carta - Evento]
+  
+  carta.addEventListener('click', (data) => {
+    divflotante.style.visibility = 'visible'
+    eventoTarjetaFlotante(data)
+  })
 }
 
-listaUrlPokemon()
+
+// --[■■■ Evento de Tarjeta ■■■]
+function eventoTarjetaFlotante (data) {
+  divflotante.addEventListener('click', () => {
+    divflotante.style.visibility = 'hidden'
+  })
+}
+

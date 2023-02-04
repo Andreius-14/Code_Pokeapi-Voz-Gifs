@@ -1,61 +1,126 @@
+/*--[ Parametros Generales ]--*/
 body {
-    margin:0;
-    height:100vh;
-    width:100%;
-    display:grid;
-    place-items:center;
     background-image: url('https://p4.wallpaperbetter.com/wallpaper/684/966/498/wood-timber-closeup-wooden-surface-wallpaper-preview.jpg');
     background-size: fixed;
-    }
-
-.api{
-
-/* background-size: ; */
-padding: 20px;
-
-background: rgba( 255, 255, 255, 0.05 );
+    /* display: flex;
+    justify-content: center;
+    align-items: center;
+     */
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+div{
+/* background: rgba( 255, 255, 255, 0.25 );
 box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-backdrop-filter: blur( 4px );
+backdrop-filter: blur( 3px );
 -webkit-backdrop-filter: blur( 4px );
 border-radius: 10px;
-border: 1px solid rgba( 255, 255, 255, 0.18 );
+border: 1px solid rgba( 255, 255, 255, 0.18 ); */
 
-height: 80%;
-display: grid;
-grid-template-columns:repeat(3,minmax(180px,1fr));
-gap: 50px;
-
-/* margin-top: 20px; */
-/* overflow: hidden; */
-/* overflow-y: scroll; */
+background: rgba(0, 0, 0, 0.25);
+box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+backdrop-filter: blur(3px);
+-webkit-backdrop-filter: blur(4px);
+border-radius: 10px;
+border: 1px solid rgba(0, 0, 0, 0.18);
+color: aliceblue;
 
 }
 
+/*--[ Gran Contenedor ]--*/
+.contenedorApi{
 
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    justify-content: space-evenly;
+    margin-top: auto;
+    margin: 30px auto 30px auto;
+    padding: 10px;
+
+    width: 80vw;
+
+}
+
+/*--[ La Carta y Contenido ]--*/
 .carta{
-width: 250px;
-/* height: 250px; */
 
-background: rgba(255, 255, 255, 0.322);
-box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-backdrop-filter: blur( 5.5px );
--webkit-backdrop-filter: blur( 5.5px );
-border-radius: 10px;
-border: 1px solid rgba( 255, 255, 255, 0.18 );
-
-/* height: 90%; */
 display: flex;
 justify-content: center;
 align-items: center;
-/* flex: 1 1; */
-/* flex-direction: column; */
-/* margin:auto; */
-/* gap: 100px; */
+gap: 10px;
+
+width: 225px;
+height: 150px;
+/* overflow:hidden; */
+
 }
 .cartaName{
-/* width: 90%; */
+    margin-top: auto;
+    margin-bottom: auto;
 }
 .cartaContenedorImg{
-    /* width: ; */
-    height: auto;
+
 }
+
+.imagenes{
+  z-index: 110;
+  filter:drop-shadow(4px 2px 1px rgb(0, 0, 0)) ; 
+  position: relative  ;
+
+
+}
+
+
+/*--[ Lo FLotante ]--*/
+.carta:hover{
+  background: rgba(0, 0, 0, 0.75);
+  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.85 );
+  /* position: absolute; */
+}
+
+
+.flotante{
+  
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+
+.contenedorFlotante{
+  height: 100%;
+  width: 100%;
+  /* background-color: red; */
+}
+.cartaDatos{
+  height: 300px;
+  width: 300px;
+    background-color: black;
+}
+
+
+
+/*--[ Brillo ]--*/
+
+/* .mirror-effect {
+    width: 150%;
+    height: 150%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: linear-gradient(to bottom right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.2) 20%, rgba(255, 255, 255, 0) 40%), url(metal-Texture.jpg);
+    animation: shine 2s ease-in-out infinite;
+  }
+  
+  @keyframes shine {
+    0% {
+      transform: translate(-50%, -50%) rotate(45deg);
+    }
+    100% {
+      transform: translate(50%, 50%) rotate(45deg);
+    }
+  } */
