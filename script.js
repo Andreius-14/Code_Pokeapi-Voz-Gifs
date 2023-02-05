@@ -1,12 +1,15 @@
 /* eslint-disable no-multiple-empty-lines */
 /* eslint-disable padded-blocks */
-const numeroPokemon = prompt('Numero de Pokemosn 1-900', 21)
+const numeroPokemon = prompt('Numero de Pokemosn 1-900', 10)
 const indexDatos = document.querySelector('.contenedorApi')
 const divflotante = document.querySelector('.contenedorFlotante')
+const cartaDatosTitulo = document.querySelector('.tituloFlotante')
+
 
 const pokeapi = 'https://pokeapi.co/api/v2/pokemon'
 
 divflotante.style.visibility = 'hidden'
+
 
 // --[■■■ Api - Obtiene Listas de Url ■■■]
 // async function listaUrlPokemon () {
@@ -53,7 +56,7 @@ async function llamadaPokemon (urlpokemon) {
 }
 
 // --[■■■ Inserta Contenido HTML ■■■]
-function insertaCartaPokemon (data) {
+function insertaCartaPokemon (dataPokemon) {
 
   // [Carta]
   const carta = document.createElement('div')
@@ -63,7 +66,7 @@ function insertaCartaPokemon (data) {
   // [Carta - Contenido]
   const contenedorName = document.createElement('p')
   contenedorName.classList.add('cartaName')
-  contenedorName.innerHTML = data.name
+  contenedorName.innerHTML = dataPokemon.name
 
   const contenedorImg = document.createElement('div')
   contenedorImg.classList.add('cartaContenedorImg')
@@ -71,7 +74,7 @@ function insertaCartaPokemon (data) {
   const imagen = document.createElement('img')
   imagen.classList.add('imagenes')
   // imagen.src = data.sprites.front_default
-  imagen.src = data.sprites.versions['generation-v']['black-white'].animated.front_default
+  imagen.src = dataPokemon.sprites.versions['generation-v']['black-white'].animated.front_default
 
 
 
@@ -86,19 +89,30 @@ function insertaCartaPokemon (data) {
 
 
   // [Carta - Evento]
-  carta.addEventListener('click', (data) => {
+  carta.addEventListener('click', () => {
     divflotante.style.visibility = 'visible'
-    eventoTarjetaFlotante(data)
+    eventoTarjetaFlotante(dataPokemon)
   })
 }
 
 
 // --[■■■ Evento de Tarjeta ■■■]
-function eventoTarjetaFlotante (data) {
+function eventoTarjetaFlotante (dataPokemon) {
 
   divflotante.addEventListener('click', () => {
     divflotante.style.visibility = 'hidden'
   })
+
+  // if (dataPokemon.name) {
+  //   console.log(dataPokemon.name)
+  //   const valor = dataPokemon.name
+  //   tituloflotante.textContent = toString(valor)
+
+  // } else {
+  //   console.log('Nada')
+  // }
+
+  cartaDatosTitulo.innerHTML = dataPokemon.name
 
 
 }
