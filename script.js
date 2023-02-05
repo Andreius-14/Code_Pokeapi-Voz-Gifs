@@ -2,8 +2,11 @@
 /* eslint-disable padded-blocks */
 const numeroPokemon = prompt('Numero de Pokemosn 1-900', 10)
 const indexDatos = document.querySelector('.contenedorApi')
-const divflotante = document.querySelector('.contenedorFlotante')
-const cartaDatosTitulo = document.querySelector('.tituloFlotante')
+
+const divflotante = document.querySelector('.Flotante_contenedor')
+const cartaDatosTitulo = document.querySelector('.Flotante_titulo')
+const cartaDatosImagen = document.querySelector('.Flotante_imagen')
+
 
 
 const pokeapi = 'https://pokeapi.co/api/v2/pokemon'
@@ -29,6 +32,7 @@ divflotante.style.visibility = 'hidden'
 //     console.error(e)
 //   }
 // }
+
 ejecucion()
 
 async function ejecucion () {
@@ -60,8 +64,7 @@ function insertaCartaPokemon (dataPokemon) {
 
   // [Carta]
   const carta = document.createElement('div')
-  carta.classList.add('carta')
-
+  carta.classList.add('cartaContenedor')
 
   // [Carta - Contenido]
   const contenedorName = document.createElement('p')
@@ -72,12 +75,9 @@ function insertaCartaPokemon (dataPokemon) {
   contenedorImg.classList.add('cartaContenedorImg')
 
   const imagen = document.createElement('img')
-  imagen.classList.add('imagenes')
+  imagen.classList.add('cartaImg')
   // imagen.src = data.sprites.front_default
   imagen.src = dataPokemon.sprites.versions['generation-v']['black-white'].animated.front_default
-
-
-
 
   // [Carta - Union de Contenido]
   contenedorImg.appendChild(imagen)
@@ -101,19 +101,15 @@ function eventoTarjetaFlotante (dataPokemon) {
 
   divflotante.addEventListener('click', () => {
     divflotante.style.visibility = 'hidden'
+    cartaDatosImagen.innerHTML = ''
   })
 
-  // if (dataPokemon.name) {
-  //   console.log(dataPokemon.name)
-  //   const valor = dataPokemon.name
-  //   tituloflotante.textContent = toString(valor)
-
-  // } else {
-  //   console.log('Nada')
-  // }
-
+  // [Nombre]
   cartaDatosTitulo.innerHTML = dataPokemon.name
-
-
+  // [Imagen]
+  const imagenFlotante = document.createElement('img')
+  imagenFlotante.classList.add('Flotante_img')
+  imagenFlotante.src = dataPokemon.sprites.other.home.front_default
+  cartaDatosImagen.appendChild(imagenFlotante)
 }
 
