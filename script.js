@@ -106,6 +106,7 @@ function eventoTarjetaFlotante (dataPokemon) {
   divflotante.addEventListener('click', () => {
     divflotante.style.visibility = 'hidden'
     cartaDatosImagen.innerHTML = ''
+    speechSynthesis.cancel()
   })
 
   // [Nombre]
@@ -153,3 +154,5 @@ async function informacionPokemon (dataTexto) {
     console.error(error)
   }
 }
+//Comentario Prueba
+
