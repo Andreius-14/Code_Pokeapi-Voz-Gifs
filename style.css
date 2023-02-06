@@ -19,23 +19,19 @@ backdrop-filter: blur(3px);
 -webkit-backdrop-filter: blur(4px);
 border-radius: 10px;
 border: 1px solid rgba(0, 0, 0, 0.18);
-color: aliceblue;
 }
 
 /*--[ Gran Contenedor ]--*/
 .contenedorApi{
-  /* height: 95%; */
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
     align-items: center;
-    
+
     gap: 10px;
     padding: 10px;
-    /* margin-bottom: 20px; */
-    min-width: 80vw;
-    /* margin: 30px 20px ; */
-  
+
+
 }
 
 /*--[ La Carta y Contenido ]--*/
@@ -46,17 +42,18 @@ color: aliceblue;
   gap: 10px;
   width: 225px;
   height: 150px;
+  color: aliceblue;
 }
 .cartaName{
     margin-top: auto;
     margin-bottom: auto;
-    
+
 }
 .cartaContenedorImg{
 }
 
 .cartaImg{
-  filter:drop-shadow(4px 2px 1px rgb(0, 0, 0)) ; 
+  filter:drop-shadow(4px 2px 1px rgb(0, 0, 0)) ;
   padding: 15px;
 
 }
@@ -71,41 +68,62 @@ color: aliceblue;
 /*--[ El contenedor Flotante ]--*/
 
 .Flotante_contenedor{
+  backdrop-filter: blur(5px);
+
+  height: 100%;
+  width: 100%;
+
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%,-50%);
-
-  height: 100%;
-  width: 100%;
-  /* background-color: red; */
+  
   display: grid;
   justify-content: center;
   align-items: center;
 }
+
 .Flotante_tarjeta{
-  max-height: 500px;
-  max-width: 500px;
+
+  max-width: 80vw;
+  width: 400px;
+  /* max-height: 90vh; */
+  overflow: hidden;
+  
   display: flex;
+  align-items: center;
   flex-direction: column;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center; 
-  gap: 10px;
-  padding: 10px;
+  
+  flex: 1 1;
+  background-color: rgba(240, 248, 255, 0.298);
+  border: 0;
 }
 
 .Flotante_titulo{
-  color:rgb(223, 18, 147);
-}
-.Flotante_imagen{
-  /* background-color: red; */
-  width: 80%;
-}
-.Flotante_img{
-  object-fit: contain;
-  width: 100%;
-  filter: drop-shadow(15px 5px 2px rgb(3, 11, 31));
+  background-color: rgba(88, 56, 56, 0.879);
+  text-align: center;
+  font-size: 3rem;
+  align-self: stretch;
+  border-radius:  0px;
+  color: azure;
 }
 
+.Flotante_imagen{
+/* max-width: 75%; */
+margin: 20px;
+
+}
+
+.Flotante_img{
+  filter: drop-shadow(8px 3px 3px black);
+  width: 100%;
+  object-fit: cover;
+  /* padding: 10px; */
+}
+
+.Flotante_texto{
+  text-align: center;
+  margin: auto 10px;
+  margin-bottom: 15px;
+}
 

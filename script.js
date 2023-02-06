@@ -6,10 +6,14 @@ const indexDatos = document.querySelector('.contenedorApi')
 const divflotante = document.querySelector('.Flotante_contenedor')
 const cartaDatosTitulo = document.querySelector('.Flotante_titulo')
 const cartaDatosImagen = document.querySelector('.Flotante_imagen')
-
-
+const cartaDatosTexto = document.querySelector('.Flotante_texto')
 
 const pokeapi = 'https://pokeapi.co/api/v2/pokemon'
+
+if (!numeroPokemon || typeof numeroPokemon === 'string') {
+  console.log(numeroPokemon)
+  llamadaPokemon(`${pokeapi}/25`)
+}
 
 divflotante.style.visibility = 'hidden'
 
@@ -111,5 +115,41 @@ function eventoTarjetaFlotante (dataPokemon) {
   imagenFlotante.classList.add('Flotante_img')
   imagenFlotante.src = dataPokemon.sprites.other.home.front_default
   cartaDatosImagen.appendChild(imagenFlotante)
+
+  const textoPokemon = dataPokemon.species.url
+  informacionPokemon(textoPokemon)
 }
 
+// --[■■■ Info Basica ■■■]
+async function informacionPokemon (dataTexto) {
+  try {
+
+    // [Enlace Api]
+    const TextoRespuesta = await fetch(dataTexto)
+    const TextoPokemon = await TextoRespuesta.json()
+
+    const textoIdiomas = TextoPokemon.flavor_text_entries
+    const textoEspañol = []
+    // console.log(TextoPokemon.flavor_text_entries)
+    textoIdiomas.forEach((i) => {
+      if (i.language.name === 'es') {
+        console.log(i.flavor_text)
+        textoEspañol.push(i.flavor_text)
+      }
+    })
+
+    const randomTexto = textoEspañol[Math.floor(Math.random() * textoEspañol.length)]
+
+    const utterance = new SpeechSynthesisUtterance()
+    utterance.text = randomTexto
+    utterance.lang = 'es-ES'
+    utterance.rate = 1
+    window.speechSynthesis.speak(utterance)
+
+    cartaDatosTexto.innerHTML = randomTexto
+
+
+  } catch (error) {
+    console.error(error)
+  }
+}
