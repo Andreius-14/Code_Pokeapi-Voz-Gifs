@@ -1,6 +1,6 @@
 /* eslint-disable no-multiple-empty-lines */
 /* eslint-disable padded-blocks */
-const numeroPokemon = prompt('Numero de Pokemosn 1-900', 10)
+const numeroPokemon = parseInt(prompt('Numero de Pokemosn 1-900', 10))
 const indexDatos = document.querySelector('.contenedorApi')
 
 const divflotante = document.querySelector('.Flotante_contenedor')
@@ -10,7 +10,7 @@ const cartaDatosTexto = document.querySelector('.Flotante_texto')
 
 const pokeapi = 'https://pokeapi.co/api/v2/pokemon'
 
-if (!numeroPokemon || typeof numeroPokemon === 'string') {
+if (isNaN(numeroPokemon)) {
   console.log(numeroPokemon)
   llamadaPokemon(`${pokeapi}/25`)
 }
@@ -106,7 +106,7 @@ function eventoTarjetaFlotante (dataPokemon) {
   divflotante.addEventListener('click', () => {
     divflotante.style.visibility = 'hidden'
     cartaDatosImagen.innerHTML = ''
-    speechSynthesis.cancel()
+     window.speechSynthesis.cancel()
   })
 
   // [Nombre]
