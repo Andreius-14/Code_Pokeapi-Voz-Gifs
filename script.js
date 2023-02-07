@@ -106,7 +106,8 @@ function eventoTarjetaFlotante (dataPokemon) {
   divflotante.addEventListener('click', () => {
     divflotante.style.visibility = 'hidden'
     cartaDatosImagen.innerHTML = ''
-     window.speechSynthesis.cancel()
+    window.speechSynthesis.cancel()
+    delete utterance.text
   })
 
   // [Nombre]
